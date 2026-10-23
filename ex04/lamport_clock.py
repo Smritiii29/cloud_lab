@@ -41,3 +41,24 @@ timestamp = P2.send_message()
 
 # P1 receives the message
 P1.receive_message(timestamp)
+
+# //on vm1(target)
+# sudo apt update 
+# sudo apt install openssh-server -y 
+# sudo systemctl enable --now ssh
+
+# sudo mkdir -p /var/www/html/site2 (on vm1)
+# //on vm2
+# //first check what files exist
+# ls -l /var/www/html
+# //transfer files
+# rsync -av /var/www/html/ username@VM1_IP:~/vm2-site/(to get username try whoami)
+# //now again on vm1 
+# sudo cp -r ~/vm2-site/. /var/www/html/site2/
+
+# //to verify if two servers are suitable for consolidation 
+# //check cpu, memory , disk storage , file compatability 
+# free -h //memory
+# top //cpu 
+# df -h //filesystem space avail
+# du -sh /var/www/html //size of website directory
